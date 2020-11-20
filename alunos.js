@@ -8,12 +8,23 @@ app.use((req, res, next) => { //Cria um middleware onde todas as requests passam
         next(); //Não precisa redirecionar, passa para os próximos middlewares que servirão com o conteúdo desejado 
 });
 
-app.get("/", function(req, res){
-	res.send("Hello World");
+app.get("/alunos", function(req, res){
+	var MongoClient = require('mongodb').MongoClient;
+	var url = "geonosis.mongodb.umbler.com:39472";
+
+	MongoClient.connect(url, function(err, db) {
+  	if (err) throw err;
+  		var dbo = db.db("brocolisdb");
+  		dbo.brocolisdb("brocolisdb").find({}).toArray(function(err, result) {
+    	if (err) throw err;
+    		console.log(result);
+    		db.close();
+  });
+});
 })
 
 app.listen(3000, function(){
-console.log("Servidor rodando na url https://brocolis.tk/");
+console.log("Servidor rodando na url https://brocolis.tk/alunos");
 
 });
 
