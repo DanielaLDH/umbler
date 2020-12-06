@@ -9,11 +9,11 @@ app.use((req, res, next) => {
 });
 
 app.get("/", function(req, res){
-	res.send("Hello World");
+	res.send("Hello World ");
 })
 
 app.listen(3000, function(){
-console.log("Servidor rodando na url https://brocolis.tk/");
+console.log("Servidor rodando na url https://brocolis.tk/ ");
 
 });
 
